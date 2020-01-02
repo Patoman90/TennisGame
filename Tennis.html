@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tennis Game project</title>
+</head>
+<body>
+<h1>Patrick's Tennis Game Project</h1>
+
+<!--Canvas element and properties-->
+<canvas id="Tennis" width="800" height="600">
+
+</canvas>
+
+<script>
+    <!--Data-->
+    let canvas;
+    let canvasContext;
+    let ballX = 10;
+    let ballSpeedX = 5;
+    let ballY = 10;
+    let ballSpeedY = 5;
+    var paddle1Y = 250;
+    const paddle_height = 75;
+
+    //Player controls functionality
+    function playerMovementAndPosition(evt){
+        var rect = canvas.getBoundingClientRect() ;
+        var root = document.documentElement;
+        var mouseX = evt.clientX - rect.left - root.scrollLeft;
+        var mouseY = evt.clientY - rect.top - root.scrollTop;
+        return {
+            x:mouseX,
+            y:mouseY
+        }
+
+    }
+
+
+    <!--When the window has loaded a anonymous function is called-->
+    window.onload = function(){
+
+        <!--Message printed to the console when the window has loaded.-->
+        console.log('Welcome to the tennis game made by Patrick from his Udemy course.');
+
+        <!--Canvas is found using the document.getElementById method with the Id Tennis.-->
+        canvas = document.getElementById('Tennis');
+
+        <!--Draws a 2d game on the canvas-->
+        canvasContext = canvas.getContext('2d');
+
+        <!-- function called and Speed of the ball movement-->
+        let framesPerSecond = 30;
+        setInterval(callToAction, 1000/framesPerSecond);
+
+        //Calls the function playerMovementAndPosition and executes when the mouse is moved.
+        canvas.addEventListener('mousemove',
+        function(evt) {
+                var mousePos = playerMovementAndPosition(evt);
+                paddle1Y = mousePos.y - (paddle_height/2);
+
+        });
+
+
+    }
+
+    <!--Function that calls both the draw and movement functions-->
+    function callToAction(){
+        drawEverything();
+        moveElementsX();
+        moveElementsY();
+    }
+
+    <!--Movement X axis function-->
+    function moveElementsX(){
+        <!--ballX called and 5px added each iteration-->
+        ballX = ballX + ballSpeedX;
+
+        //Code that stops ball leaving screen to the left
+        if(ballX < 0)
+        {
+            ballSpeedX = -ballSpeedX;
+        }
+         //Code that stops ball leaving screen to the right
+        if(ballX > canvas.width)
+        {
+            ballSpeedX = -ballSpeedX;
+        }
+
+    }
+
+
+    <!--Movement Y axis function-->
+    function moveElementsY(){
+        <!--ballY called and 5px added each iteration-->
+        ballY = ballY + ballSpeedY;
+
+        //Code that stops ball leaving screen to the top
+        if(ballY < 0)
+        {
+            ballSpeedY = -ballSpeedY;
+        }
+         //Code that stops ball leaving screen to the bottom
+        if(ballY > canvas.height)
+        {
+            ballSpeedY = -ballSpeedY;
+        }
+
+    }
+    <!--Draw to canvas function-->
+    function drawEverything(){
+
+        <!--Black square drawn as background-->
+        colorRect(0,0,canvas.width, canvas.height, 'black');
+
+        <!--Red paddle drawn on black square-->
+        colorRect(5, paddle1Y, 10, paddle_height, 'red');
+
+        <!--Green paddle drawn on black square-->
+        colorRect(780, 300, 10, 75, 'green');
+
+        <!--Ball is drawn on black background-->
+        colorCircle(ballX, ballY, 5, 'blue');
+    }
+
+    <!--Function used to create the Ball-->
+    function colorCircle(centerX, centerY, radius, drawColor){
+        canvasContext.fillStyle = drawColor;
+        canvasContext.beginPath();
+        canvasContext.arc(centerX, centerY, radius, 0, Math.PI*2, true);
+        canvasContext.fill();
+
+    }
+
+    //Parent template for the canvas elements
+    function colorRect(leftX ,topY ,width ,height ,drawColor){
+        canvasContext.fillStyle = drawColor;
+        canvasContext.fillRect(leftX, topY, width, height);
+
+    }
+</script>
+</body>
+</html>
