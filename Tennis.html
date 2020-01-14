@@ -20,8 +20,11 @@
     let ballSpeedX = 5;
     let ballY = 10;
     let ballSpeedY = 5;
+
     var paddle1Y = 250;
+    var paddle2Y = 250;
     const paddle_height = 75;
+    const paddle_thickness = 10;
 
     //Player controls functionality
     function playerMovementAndPosition(evt){
@@ -57,55 +60,58 @@
         canvas.addEventListener('mousemove',
         function(evt) {
                 var mousePos = playerMovementAndPosition(evt);
-                paddle1Y = mousePos.y - (paddle_height/2);
+                paddle2Y = mousePos.y - (paddle_height/2);
 
         });
-
-
     }
 
-    <!--Function that calls both the draw and movement functions-->
+      <!--Function that calls both the draw and movement functions-->
     function callToAction(){
         drawEverything();
-        moveElementsX();
-        moveElementsY();
+        moveElements();
     }
 
-    <!--Movement X axis function-->
-    function moveElementsX(){
-        <!--ballX called and 5px added each iteration-->
+     //Ball resets function
+    function  ballReset(){
+        ballSpeedX = -ballSpeedX;
+        ballX = canvas.width/2;
+        ballY = canvas.height/2;
+    }
+     <!--Movement function-->
+    function moveElements(){
         ballX = ballX + ballSpeedX;
-
-        //Code that stops ball leaving screen to the left
-        if(ballX < 0)
-        {
-            ballSpeedX = -ballSpeedX;
-        }
-         //Code that stops ball leaving screen to the right
-        if(ballX > canvas.width)
-        {
-            ballSpeedX = -ballSpeedX;
-        }
-
-    }
-
-
-    <!--Movement Y axis function-->
-    function moveElementsY(){
-        <!--ballY called and 5px added each iteration-->
         ballY = ballY + ballSpeedY;
 
-        //Code that stops ball leaving screen to the top
+        // PLayer Paddle collision
+        if(ballX <= 10) {
+            if(ballY > paddle1Y &&
+                ballY < paddle1Y + paddle_height){
+                     ballSpeedX = -ballSpeedX
+            } else{
+                     ballReset();
+            }
+
+        }
+         //Code that changes ball direction on screen to the right
+        if(ballX > canvas.width)
+        {
+            if(ballY > paddle2Y &&
+                ballY < paddle2Y + paddle_height){
+                     ballSpeedX = -ballSpeedX
+            } else{
+                     ballReset();
+            }
+        }
+         //Code that stops ball leaving screen to the top
         if(ballY < 0)
         {
             ballSpeedY = -ballSpeedY;
         }
-         //Code that stops ball leaving screen to the bottom
+        //Code that stops ball leaving screen to the bottom
         if(ballY > canvas.height)
         {
             ballSpeedY = -ballSpeedY;
         }
-
     }
     <!--Draw to canvas function-->
     function drawEverything(){
@@ -114,10 +120,10 @@
         colorRect(0,0,canvas.width, canvas.height, 'black');
 
         <!--Red paddle drawn on black square-->
-        colorRect(5, paddle1Y, 10, paddle_height, 'red');
+        colorRect(0, paddle1Y, paddle_thickness, paddle_height, 'red');
 
         <!--Green paddle drawn on black square-->
-        colorRect(780, 300, 10, 75, 'green');
+        colorRect(canvas.width - paddle_thickness, paddle2Y, paddle_thickness, paddle_height, 'green');
 
         <!--Ball is drawn on black background-->
         colorCircle(ballX, ballY, 5, 'blue');
@@ -138,6 +144,7 @@
         canvasContext.fillRect(leftX, topY, width, height);
 
     }
+
 </script>
 </body>
 </html>
