@@ -78,17 +78,21 @@
         ballY = canvas.height/2;
     }
 
-    //Computer player movement
-    function AI paddle(){
-        if (paddle2Y < ballY){
-            paddle2Y += 6;}
-        else{ paddle2Y -= 6;}
-    }
+        //Computer player movement
+        function AIpaddle(){
+         var paddle2YCenter = paddle2Y + (paddle_height/2); 
+         if (paddle2Y < ballY){
+             paddle2Y += 6;}
+         else{ paddle2Y -= 6;}
+        }
 
      <!--Movement function-->
     function moveElements(){
-        ballX = ballX + ballSpeedX;
-        ballY = ballY + ballSpeedY;
+
+        AIpaddle();
+
+        ballX += ballSpeedX;
+        ballY += ballSpeedY;
 
         // PLayer Paddle collision
         if(ballX <= 10) {
