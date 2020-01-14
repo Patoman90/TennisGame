@@ -77,6 +77,14 @@
         ballX = canvas.width/2;
         ballY = canvas.height/2;
     }
+
+    //Computer player movement
+    function AI paddle(){
+        if (paddle2Y < ballY){
+            paddle2Y += 6;}
+        else{ paddle2Y -= 6;}
+    }
+
      <!--Movement function-->
     function moveElements(){
         ballX = ballX + ballSpeedX;
