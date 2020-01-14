@@ -1,3 +1,3 @@
 # TennisGame
 
-Game can be played at --> https://patoman90.github.io/TennisGame/.
+Game can be played at --> https://patoman90.github.io/TennisGame/Tennis.html.
