@@ -23,6 +23,7 @@
 
     var player1Score = 0;
     var player2Score = 0;
+    const winGame = 12;
 
     var paddle1Y = 250;
     var paddle2Y = 250;
@@ -76,6 +77,10 @@
 
     //Ball resets function
     function  ballReset(){
+        if(player1Score >= winGame || player2Score >= winGame){
+            player1Score = 0; 
+            player2Score =0;
+        }
         ballSpeedX = -ballSpeedX;
         ballX = canvas.width/2;
         ballY = canvas.height/2;
@@ -107,8 +112,8 @@
                   ballSpeedY = deltaY * 0.35;
                 } 
             else{
-                    ballReset();
-                    player2Score ++;
+                 player2Score ++;   //Must be before ballreset();
+                 ballReset();
             }
 
         }
@@ -121,8 +126,9 @@
                      var deltaY = ballY-(paddle2Y + paddle_height/2);
                   ballSpeedY = deltaY * 0.35;
             } else{
+                     player1Score ++; //Must be before ballreset();
                      ballReset();
-                     player1Score ++;
+                     
             }
         }
          //Code that stops ball leaving screen to the top
