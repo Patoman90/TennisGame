@@ -83,9 +83,10 @@
     //Computer player movement
         function AIpaddle(){
          var paddle2YCenter = paddle2Y + (paddle_height/2); 
-         if (paddle2Y < ballY){
+         if (paddle2YCenter < ballY -35){
              paddle2Y += 6;}
-         else{ paddle2Y -= 6;}
+         else if (paddle2YCenter > ballY +35)
+                 { paddle2Y -= 6;}
         }
 
     //Movement function
@@ -145,8 +146,8 @@
         colorCircle(ballX, ballY, 5, 'blue');
 
         //Player scores
-        canvasContext.fillText("Player1Score", 100, 100);
-        canvasContext.fillText("Player2Score", canvas.width - 100, 100);
+        canvasContext.fillText("player1Score", 100, 100);
+        canvasContext.fillText("player2Score", canvas.width - 100, 100);
     }
 
     //Function used to create the Ball
