@@ -13,7 +13,7 @@
 </canvas>
 
 <script>
-    //Data
+    //Data variables
     let canvas;
     let canvasContext;
     let ballX = 10;
@@ -25,6 +25,8 @@
     var paddle2Y = 250;
     const paddle_height = 75;
     const paddle_thickness = 10;
+    var player1Score = 0;
+    var player2Score = 0;
 
     //Player controls functionality
     function playerMovementAndPosition(evt){
@@ -94,17 +96,18 @@
         ballX += ballSpeedX;
         ballY += ballSpeedY;
 
-      //PLayer Paddle collision
+      //PLayer1 screen and Paddle collisions
         if(ballX <= 10) {
             if(ballY > paddle1Y &&
-                ballY < paddle1Y + paddle_height){
-                     ballSpeedX = -ballSpeedX
-            } else{
-                     ballReset();
+                ballY < paddle1Y + paddle_height)
+                { ballSpeedX = -ballSpeedX} 
+            else{
+                    ballReset();
+                    player2Score += 1;
             }
 
         }
-        //Code that changes ball direction on screen to the right
+        //PLayer2 screen and Paddle collisions
         if(ballX > canvas.width)
         {
             if(ballY > paddle2Y &&
@@ -112,6 +115,7 @@
                      ballSpeedX = -ballSpeedX
             } else{
                      ballReset();
+                     player1Score += 1;
             }
         }
          //Code that stops ball leaving screen to the top
@@ -139,6 +143,10 @@
 
         //Ball is drawn on black background
         colorCircle(ballX, ballY, 5, 'blue');
+
+        //Player scores
+        canvasContext.fillText("Player1Score", 100, 100);
+        canvasContext.fillText("Player2Score", canvas.width - 100, 100);
     }
 
     //Function used to create the Ball
