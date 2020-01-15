@@ -102,7 +102,10 @@
         if(ballX <= 10) {
             if(ballY > paddle1Y &&
                 ballY < paddle1Y + paddle_height)
-                { ballSpeedX = -ballSpeedX} 
+                { ballSpeedX = -ballSpeedX
+                  var deltaY = ballY-(paddle1Y + paddle_height/2);
+                  ballSpeedY = deltaY * 0.35;
+                } 
             else{
                     ballReset();
                     player2Score ++;
@@ -115,6 +118,8 @@
             if(ballY > paddle2Y &&
                 ballY < paddle2Y + paddle_height){
                      ballSpeedX = -ballSpeedX
+                     var deltaY = ballY-(paddle2Y + paddle_height/2);
+                  ballSpeedY = deltaY * 0.35;
             } else{
                      ballReset();
                      player1Score ++;
