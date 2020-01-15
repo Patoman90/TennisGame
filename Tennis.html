@@ -117,7 +117,7 @@
                      ballSpeedX = -ballSpeedX
             } else{
                      ballReset();
-                     player1Score --;
+                     player1Score ++;
             }
         }
          //Code that stops ball leaving screen to the top
@@ -147,8 +147,8 @@
         colorCircle(ballX, ballY, 5, 'white');
 
         //Player scores
-        canvasContext.fillText("player1Score", 100, 100);
-        canvasContext.fillText("player2Score", canvas.width-100, 100);
+        canvasContext.fillText(player1Score, 100, 100);
+        canvasContext.fillText(player2Score, canvas.width-100, 100);
     }
 
     //Function used to create the Ball
