@@ -13,7 +13,7 @@
 </canvas>
 
 <script>
-    <!--Data-->
+    //Data
     let canvas;
     let canvasContext;
     let ballX = 10;
@@ -40,19 +40,19 @@
     }
 
 
-    <!--When the window has loaded a anonymous function is called-->
+    //When the window has loaded a anonymous function is called
     window.onload = function(){
 
-        <!--Message printed to the console when the window has loaded.-->
+        //Message printed to the console when the window has loaded.
         console.log('Welcome to the tennis game made by Patrick from his Udemy course.');
 
-        <!--Canvas is found using the document.getElementById method with the Id Tennis.-->
+        //Canvas is found using the document.getElementById method with the Id Tennis.
         canvas = document.getElementById('Tennis');
 
-        <!--Draws a 2d game on the canvas-->
+        //Draws a 2d game on the canvas
         canvasContext = canvas.getContext('2d');
 
-        <!-- function called and Speed of the ball movement-->
+        //function called and Speed of the ball movement
         let framesPerSecond = 30;
         setInterval(callToAction, 1000/framesPerSecond);
 
@@ -65,20 +65,20 @@
         });
     }
 
-      <!--Function that calls both the draw and movement functions-->
+    //Function that calls both the draw and movement functions
     function callToAction(){
         drawEverything();
         moveElements();
     }
 
-     //Ball resets function
+    //Ball resets function
     function  ballReset(){
         ballSpeedX = -ballSpeedX;
         ballX = canvas.width/2;
         ballY = canvas.height/2;
     }
 
-        //Computer player movement
+    //Computer player movement
         function AIpaddle(){
          var paddle2YCenter = paddle2Y + (paddle_height/2); 
          if (paddle2Y < ballY){
@@ -86,7 +86,7 @@
          else{ paddle2Y -= 6;}
         }
 
-     <!--Movement function-->
+    //Movement function
     function moveElements(){
 
         AIpaddle();
@@ -94,7 +94,7 @@
         ballX += ballSpeedX;
         ballY += ballSpeedY;
 
-        // PLayer Paddle collision
+      //PLayer Paddle collision
         if(ballX <= 10) {
             if(ballY > paddle1Y &&
                 ballY < paddle1Y + paddle_height){
@@ -104,7 +104,7 @@
             }
 
         }
-         //Code that changes ball direction on screen to the right
+        //Code that changes ball direction on screen to the right
         if(ballX > canvas.width)
         {
             if(ballY > paddle2Y &&
@@ -125,23 +125,23 @@
             ballSpeedY = -ballSpeedY;
         }
     }
-    <!--Draw to canvas function-->
+    //Draw to canvas function
     function drawEverything(){
 
-        <!--Black square drawn as background-->
+        //Black square drawn as background
         colorRect(0,0,canvas.width, canvas.height, 'black');
 
-        <!--Red paddle drawn on black square-->
+        //Red paddle drawn on black square
         colorRect(0, paddle1Y, paddle_thickness, paddle_height, 'red');
 
-        <!--Green paddle drawn on black square-->
+        //Green paddle drawn on black square
         colorRect(canvas.width - paddle_thickness, paddle2Y, paddle_thickness, paddle_height, 'green');
 
-        <!--Ball is drawn on black background-->
+        //Ball is drawn on black background
         colorCircle(ballX, ballY, 5, 'blue');
     }
 
-    <!--Function used to create the Ball-->
+    //Function used to create the Ball
     function colorCircle(centerX, centerY, radius, drawColor){
         canvasContext.fillStyle = drawColor;
         canvasContext.beginPath();
