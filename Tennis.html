@@ -28,7 +28,7 @@
 
     var paddle1Y = 250;
     var paddle2Y = 250;
-    const paddle_height = 75;
+    const paddle_height = 70;
     const paddle_thickness = 10;
     
     //Player controls functionality
@@ -158,7 +158,7 @@
 
         //Check to see if game is won by a player.
         if(showWinnerScreen){
-            canvasContext.fillStyle("white");
+            canvasContext.fillStyle = 'white';
             canvasContext.fillText("Click to continue", canvas.width/2, 100);
             return;
         }
