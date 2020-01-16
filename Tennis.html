@@ -45,7 +45,7 @@
     }
 
     // This function listens for the mouse click when the game is over.
-    function handleMouseCLick(evt){
+    function handleMouseClick(evt){
         if (showWinnerScreen){
             player1Score = 0;
             player2Score = 0;
@@ -71,10 +71,8 @@
         setInterval(callToAction, 1000/framesPerSecond);
 
         //Event listener that listens for when the user clicking on the mouse and calls uses the handleMouseCLick function.
-        canvas.addEventListener('mousedown','handleMouseCLick');
+        canvas.addEventListener('mousedown',handleMouseClick);
         
-
-
         //Calls the function playerMovementAndPosition and executes when the mouse is moved.
         canvas.addEventListener('mousemove',
         function(evt){
