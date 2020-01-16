@@ -71,7 +71,7 @@
         setInterval(callToAction, 1000/framesPerSecond);
 
         //Event listener that listens for when the user clicking on the mouse and calls uses the handleMouseCLick function.
-        canvas.addEventListener('mousedown',handleMouseClick);
+        canvas.addEventListener('mousedown', handleMouseClick);
         
         //Calls the function playerMovementAndPosition and executes when the mouse is moved.
         canvas.addEventListener('mousemove',
@@ -167,7 +167,15 @@
 
         //Check to see if game is won and draw text on black canvas.
         if(showWinnerScreen){
+            
             canvasContext.fillStyle = 'white';
+
+            if(player1Score >= winGame){
+                canvasContext.fillText("Red Wins!", 400, 350);}
+
+                else if(player2Score >= winGame){
+                    canvasContext.fillText("Green Wins!", 400, 350);
+            }
             canvasContext.fillText("Click to continue", 400, 300);
             return;
         }
