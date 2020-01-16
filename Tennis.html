@@ -44,6 +44,15 @@
 
     }
 
+    // This function listens for the mouse click when the game is over.
+    function handleMouseCLick(evt){
+        if (showWinnerScreen){
+            player1Score = 0;
+            player2Score = 0;
+            showWinnerScreen = false;
+        }
+    }
+
 
     //When the window has loaded a anonymous function is called
     window.onload = function(){
@@ -61,12 +70,16 @@
         let framesPerSecond = 30;
         setInterval(callToAction, 1000/framesPerSecond);
 
+        //Event listener that listens for when the user clicking on the mouse and calls uses the handleMouseCLick function.
+        cnavas.addEventListener('mousedown','handleMouseCLick');
+        
+
+
         //Calls the function playerMovementAndPosition and executes when the mouse is moved.
         canvas.addEventListener('mousemove',
         function(evt){
             var mousePos = playerMovementAndPosition(evt);
                 paddle1Y = mousePos.y - (paddle_height/2);
-
         });
     }
 
@@ -79,8 +92,6 @@
     //Ball resets function
     function  ballReset(){
         if(player1Score >= winGame || player2Score >= winGame){
-            player1Score = 0; 
-            player2Score = 0;
             showWinnerScreen = true;
         }
         ballSpeedX = -ballSpeedX;
@@ -156,10 +167,10 @@
         //Black square drawn as background
         colorRect(0,0,canvas.width, canvas.height, 'black');
 
-        //Check to see if game is won by a player.
+        //Check to see if game is won and draw text on black canvas.
         if(showWinnerScreen){
             canvasContext.fillStyle = 'white';
-            canvasContext.fillText("Click to continue", 100, 100);
+            canvasContext.fillText("Click to continue", 400, 300);
             return;
         }
         //Red paddle drawn on black square
