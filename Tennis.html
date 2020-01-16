@@ -159,6 +159,14 @@
             ballSpeedY = -ballSpeedY;
         }
     }
+
+    function drawNet(){
+        for(var i = 0; i < canvas.height; i += 40){
+            colorRect(canvas.width/2 - 1, i, 2, 20, 'white');
+            }
+    }
+
+
     //Draw to canvas function
     function drawEverything(){
 
@@ -179,6 +187,9 @@
             canvasContext.fillText("Click to continue", 400, 300);
             return;
         }
+        //Draw the net funtion is called here.
+        drawNet();
+
         //Red paddle drawn on black square
         colorRect(0, paddle1Y, paddle_thickness, paddle_height, 'red');
 
