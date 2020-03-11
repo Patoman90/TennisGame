@@ -1,0 +1,37 @@
+
+
+header{
+    color:#ffd9b3;
+    font-family: 'Monoton', cursive;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+
+body {
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdnimg.webstaurantstore.com%2Fimages%2Fproducts%2Fextra_large%2F187066%2F773421.jpg&f=1&nofb=1")
+}
+
+
+
+#Tennis{
+    border-style: solid;
+    border-width: 20px;
+    border-color: #ff9900;
+    border-radius: 5px;
+}
+
+canvas{
+    
+    border-style: solid;
+    border-width: 20px;
+    border-color: #ff9900;
+    border-radius: 5px;
+}
+
+footer{
+    color:#ffd9b3;
+    font-family: 'Monoton', cursive;
+    text-align: center;
+    letter-spacing: 2px;
+}

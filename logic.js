@@ -8,7 +8,7 @@
 
         var player1Score = 0;
         var player2Score = 0;
-        const winGame = 5;
+        const winGame = 10;
         let showWinnerScreen = false;
 
         var paddle1Y = 250;
@@ -29,7 +29,7 @@
 
         }
 
-        // This function listens for the mouse click when the game is over.
+    // This function listens for the mouse click when the game is over.
     function handleMouseClick(evt){
         if (showWinnerScreen){
             player1Score = 0;
