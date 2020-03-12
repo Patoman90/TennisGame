@@ -5,6 +5,7 @@
         let ballSpeedX = 5;
         let ballY = 10;
         let ballSpeedY = 5;
+        
 
         var player1Score = 0;
         var player2Score = 0;
@@ -114,8 +115,10 @@
                   ballSpeedY = deltaY * 0.35;
                 } 
             else{
+                 if(ballX < 0){
                  player2Score ++;   //Must be before ballreset();
                  ballReset();
+                }
             }
 
         }
