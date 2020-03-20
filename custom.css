@@ -13,12 +13,17 @@ body {
     background-image: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdnimg.webstaurantstore.com%2Fimages%2Fproducts%2Fextra_large%2F187066%2F773421.jpg&f=1&nofb=1")
 }
 
+#tennis_frame{
+    box-align: center;
+}
+
 #Tennis_Position{
+    
     padding: 250px;
 }
 
 #Tennis{
-    position: relative;
+    
     border-style: solid;
     border-width: 20px;
     border-color: #ff9900;
@@ -26,7 +31,6 @@ body {
 }
 
 canvas{
-    
     border-style: solid;
     border-width: 20px;
     border-color: #ff9900;
