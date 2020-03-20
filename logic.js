@@ -12,21 +12,21 @@
         const winGame = 10;
         let showWinnerScreen = false;
 
-        var paddle1Y = 250;
-        var paddle2Y = 250;
-        const paddle_height = 100;
+        var paddle1Y = 300;
+        var paddle2Y = 300;
+        const paddle_height = 50;
         const paddle_thickness = 10;
     
         //Player controls functionality
         function playerMovementAndPosition(evt){
-            var rect = canvas.getBoundingClientRect() ;
+            var rect = canvas.getBoundingClientRect();
             var root = document.documentElement;
             var mouseX = evt.clientX - rect.left - root.scrollLeft;
             var mouseY = evt.clientY - rect.top - root.scrollTop;
             return {
                 x:mouseX,
                 y:mouseY
-            }
+            };
 
         }
 
@@ -63,7 +63,7 @@
         canvas.addEventListener('mousemove',
             function(evt) {
                 var mousePos = playerMovementAndPosition(evt);
-                paddle1Y = mousePos.y - (paddle_height/2);
+                    paddle1Y = mousePos.y - (paddle_height/2);
         });
     }
 
