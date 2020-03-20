@@ -14,7 +14,7 @@
 
         var paddle1Y = 250;
         var paddle2Y = 250;
-        const paddle_height = 70;
+        const paddle_height = 100;
         const paddle_thickness = 10;
     
         //Player controls functionality
@@ -61,8 +61,8 @@
         
         //Calls the function playerMovementAndPosition and executes when the mouse is moved.
         canvas.addEventListener('mousemove',
-        function(evt){
-            var mousePos = playerMovementAndPosition(evt);
+            function(evt) {
+                var mousePos = playerMovementAndPosition(evt);
                 paddle1Y = mousePos.y - (paddle_height/2);
         });
     }
